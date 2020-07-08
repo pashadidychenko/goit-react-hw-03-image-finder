@@ -25,11 +25,11 @@
 
 Запускаем команду в терминале:
 
-npm i
+- npm i
 
 потом
 
-git init
+- git init
 
 ---
 
@@ -39,35 +39,35 @@ git init
 
 После завершения проэкта запускаем
 
-git add .
-git commit -m "коментарий к проэкту"
+- git add .
+- git commit -m "коментарий к проэкту"
 
 ---
 
 Далее
 
-git remote add origin <url>
+- git remote add origin "<url>"
 
-где <url> это адрес репозитория Вашего проэкта на гите
+где "<url>" это адрес репозитория Вашего проэкта на гите
 
 потом
 
-git push -u origin master
+- git push -u origin master
 
 ---
 
 Пример:
-git remote add origin https://github.com/pashadidychenko/goit-react-hw-02-phonebook
-git push -u origin master
+-- git remote add origin https://github.com/pashadidychenko/goit-react-hw-02-phonebook
+-- git push -u origin master
 
 ---
 
 Далее
 
-npm run deploy
+- npm run deploy
 
 ---
 
-Все остальные страницы можно пушить с помощью
+Все остальные страницы после изменений можно пушить с помощью
 
-git push
+- git push
