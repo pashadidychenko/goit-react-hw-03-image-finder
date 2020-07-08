@@ -1,5 +1,7 @@
-Сборка реакта
-Убрано все лишнее
+## Сборка реакта
+
+## Убрано все лишнее
+
 Добавлено следующие компоненты
 
 - propTypes
@@ -57,7 +59,9 @@
 ---
 
 Пример:
+
 -- git remote add origin https://github.com/pashadidychenko/goit-react-hw-02-phonebook
+
 -- git push -u origin master
 
 ---
