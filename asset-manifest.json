@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/main.a5cb4646.chunk.js",
+    "main.js.map": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/main.a5cb4646.chunk.js.map",
+    "runtime-main.js": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/runtime-main.eb65ba4d.js",
+    "runtime-main.js.map": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/runtime-main.eb65ba4d.js.map",
+    "static/js/2.00a8171f.chunk.js": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/2.00a8171f.chunk.js",
+    "static/js/2.00a8171f.chunk.js.map": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/2.00a8171f.chunk.js.map",
+    "index.html": "/pashadidychenko/goit-react-hw-03-image-finder/index.html",
+    "precache-manifest.788b3bb2eb914930ebc6d2e49052d021.js": "/pashadidychenko/goit-react-hw-03-image-finder/precache-manifest.788b3bb2eb914930ebc6d2e49052d021.js",
+    "service-worker.js": "/pashadidychenko/goit-react-hw-03-image-finder/service-worker.js",
+    "static/js/2.00a8171f.chunk.js.LICENSE.txt": "/pashadidychenko/goit-react-hw-03-image-finder/static/js/2.00a8171f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eb65ba4d.js",
+    "static/js/2.00a8171f.chunk.js",
+    "static/js/main.a5cb4646.chunk.js"
+  ]
+}
