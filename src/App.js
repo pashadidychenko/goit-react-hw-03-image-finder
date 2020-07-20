@@ -31,12 +31,6 @@ class App extends React.Component {
     ) {
       this.addData(searchQuery, currentPage);
     }
-    if (prevState.imageData.length !== this.state.imageData.length) {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth",
-      });
-    }
   }
 
   componentWillUnmount() {
@@ -106,6 +100,10 @@ class App extends React.Component {
           <ModalWindow dataUrlLarge={largeImage} closeModal={this.closeModal} />
         )}
         {loadMoreStatus && <Button loadMore={this.loadMore} />}
+        {window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        })}
       </div>
     );
   }
