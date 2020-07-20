@@ -3,24 +3,24 @@ import styles from "./Searchbar.module.css";
 
 class Searchbar extends React.Component {
   state = {
-    searchText: "",
+    searchQuery: "",
   };
 
   inputVlue = (el) => {
     let textValue = el.target.value;
-    this.setState({ searchText: textValue });
+    this.setState({ searchQuery: textValue });
   };
 
-  searchText = (el) => {
+  addRequest = (el) => {
     el.preventDefault();
-    this.props.searchText(this.state.searchText);
-    this.setState({ searchText: "" });
+    this.props.searchText(this.state.searchQuery);
+    this.setState({ searchQuery: "" });
   };
 
   render() {
     return (
       <header className={styles.Searchbar}>
-        <form className={styles.SearchForm} onSubmit={this.searchText}>
+        <form className={styles.SearchForm} onSubmit={this.addRequest}>
           <button type="submit" className={styles.SearchFormButton}>
             <span className={styles.SearchFormBbuttonLabel}>Search</span>
           </button>
@@ -31,7 +31,7 @@ class Searchbar extends React.Component {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            value={this.state.searchText}
+            value={this.state.searchQuery}
             onChange={this.inputVlue}
           />
         </form>

@@ -4,19 +4,19 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import LoaderSpiner from "./components/LoaderSpiner/LoaderSpiner";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ModalWindow from "./components/Modal/Modal";
-import styles from "./App.module.css";
 import Button from "./components/Button/Button";
 import PropTypes from "prop-types";
+import styles from "./App.module.css";
 
 class App extends React.Component {
   state = {
-    searchText: "",
+    searchQuery: "",
     imageData: [],
     isLoading: false,
-    showModal: false,
+    showModalStatus: false,
     largeImage: "",
     currentPage: 1,
-    loadMore: false,
+    loadMoreStatus: false,
   };
 
   componentDidMount() {
@@ -24,35 +24,37 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { searchText, currentPage } = this.state;
+    const { searchQuery, currentPage } = this.state;
     if (
-      prevState.searchText !== this.state.searchText ||
+      prevState.searchQuery !== this.state.searchQuery ||
       prevState.currentPage !== this.state.currentPage
     ) {
+      this.addData(searchQuery, currentPage);
+    }
+    if (prevState.imageData.length !== this.state.imageData.length) {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "smooth",
       });
-      return this.addData(searchText, currentPage);
-    } else return;
+    }
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.closeModal, false);
   }
 
-  addData = (searchText, currentPage) => {
+  addData = (searchQuery, currentPage) => {
     this.setState({ isLoading: true });
-    Api.getImageList(searchText, currentPage)
+    Api.getImageList(searchQuery, currentPage)
       .then((imageData) =>
         this.setState((prevState) => {
           if (imageData.length !== 0) {
             return {
               imageData: prevState.imageData.concat(imageData),
-              loadMore: true,
+              loadMoreStatus: true,
             };
           } else {
-            return { loadMore: false };
+            return { loadMoreStatus: false };
           }
         })
       )
@@ -62,7 +64,7 @@ class App extends React.Component {
 
   searchText = (inputText) => {
     this.setState({
-      searchText: inputText,
+      searchQuery: inputText,
       currentPage: 1,
       imageData: [],
       loadMore: true,
@@ -70,19 +72,19 @@ class App extends React.Component {
   };
 
   showModal = (dataUrlLarge) => {
-    this.setState({ showModal: true, largeImage: dataUrlLarge });
+    this.setState({ showModalStatus: true, largeImage: dataUrlLarge });
   };
 
   closeModal = (e) => {
     if (e.keyCode === 27 || e.target.tagName === "DIV") {
-      this.setState({ showModal: false, largeImage: "" });
+      this.setState({ showModalStatus: false, largeImage: "" });
     } else return;
   };
 
   loadMore = () => {
     this.setState((prevState) => {
       if (this.state.imageData.length % 12 !== 0) {
-        return { loadMore: false };
+        return { loadMoreStatus: false };
       } else return { currentPage: prevState.currentPage + 1 };
     });
   };
@@ -92,18 +94,18 @@ class App extends React.Component {
       isLoading,
       imageData,
       largeImage,
-      showModal,
-      loadMore,
+      showModalStatus,
+      loadMoreStatus,
     } = this.state;
     return (
       <div className={styles.App}>
         <Searchbar searchText={this.searchText} />
         {isLoading ? <LoaderSpiner /> : null}
         <ImageGallery imageData={imageData} showModal={this.showModal} />
-        {showModal && (
+        {showModalStatus && (
           <ModalWindow dataUrlLarge={largeImage} closeModal={this.closeModal} />
         )}
-        {loadMore && <Button loadMore={this.loadMore} />}
+        {loadMoreStatus && <Button loadMore={this.loadMore} />}
       </div>
     );
   }
