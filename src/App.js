@@ -31,12 +31,6 @@ class App extends React.Component {
     ) {
       this.addData(searchQuery, currentPage);
     }
-    if (this.render) {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth",
-      });
-    }
   }
 
   componentWillUnmount() {
@@ -56,6 +50,12 @@ class App extends React.Component {
           } else {
             return { loadMoreStatus: false };
           }
+        })
+      )
+      .then(() =>
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
         })
       )
       .catch((error) => console.log(error))
@@ -78,7 +78,7 @@ class App extends React.Component {
   closeModal = (e) => {
     if (e.keyCode === 27 || e.target.tagName === "DIV") {
       this.setState({ showModalStatus: false, largeImage: "" });
-    } else return;
+    }
   };
 
   loadMore = () => {
